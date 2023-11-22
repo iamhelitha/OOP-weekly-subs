@@ -4,8 +4,8 @@ public class Rider {
     public String name;
     String country;
     int age;
-    double weight;
-    double height;
+    public double weight;
+    public double height;
 
     public Rider(String name, String country, int age, double weight, double height) {
         this.name = name;

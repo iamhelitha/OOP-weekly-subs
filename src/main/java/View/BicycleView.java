@@ -16,7 +16,7 @@ public class BicycleView extends  JFrame{
     private JButton btnAddBicycle;
     private JLabel lblGear;
     private JLabel lblCurrentSpeed;
-    private JPanel backPane;
+    public JPanel backPane;
 
     Bicycle bicycle;
     BicycleController bicycleController;

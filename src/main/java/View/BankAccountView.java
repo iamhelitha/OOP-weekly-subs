@@ -14,7 +14,7 @@ public class BankAccountView extends JFrame{
     private JCheckBox checkBox1;
     private JButton addAccountButton;
     private JButton calculateBalanceButton;
-    private JPanel backPanel;
+    public JPanel backPanel;
 
     public BankAccountView() {
         addAccountButton.addActionListener(new ActionListener() {

@@ -21,7 +21,7 @@ public class RiderView extends JFrame{
     private JButton btnCalBMI;
     private JTextField txtSearch;
     private JButton btnSearch;
-    private JPanel backPane;
+    public JPanel backPane;
 
     Rider rider;
     RiderController Controller;
