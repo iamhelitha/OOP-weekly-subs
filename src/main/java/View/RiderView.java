@@ -1,6 +1,7 @@
 package View;
 
 import Model.Rider;
+import Utilities.InvalidBMIDetails;
 import controller.RiderController;
 
 import javax.swing.*;
@@ -43,25 +44,41 @@ public class RiderView extends JFrame{
         btnAddRider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String name=txtName.getText();
-                String country=txtCountry.getText();
-                int age=Integer.parseInt(txtAge.getText());
-                double weight=Double.parseDouble(txtWeight.getText());
-                double height=Double.parseDouble(txtHeight.getText());
+                try{
 
-                Controller=new RiderController();
-                rider=Controller.addRider(name, country, age, weight, height);
-                riderArray[riderCount]=rider;
-                riderCount++;
+                    String name=txtName.getText();
+                    String country=txtCountry.getText();
+                    int age=Integer.parseInt(txtAge.getText());
+                    double weight=Double.parseDouble(txtWeight.getText());
+                    double height=Double.parseDouble(txtHeight.getText());
 
-                int medals=Integer.parseInt(txtMedals.getText());
-                double topSpeed=Double.parseDouble(txtSpeed.getText());
-                int records=Integer.parseInt(txtRecords.getText());
+                    //Check the weight and the height are positive
+                    if (weight<=0 || height<=0){
+                        throw new InvalidBMIDetails();
+                    }
 
-                riderRecords=Controller.addRecords(rider, medals,topSpeed,records);
-                recordList.add(riderRecords);
+                    Controller=new RiderController();
+                    rider=Controller.addRider(name, country, age, weight, height);
+                    riderArray[riderCount]=rider;
+                    riderCount++;
 
-                JOptionPane.showMessageDialog(rootPane, "ADDED"+ riderRecords.displayRecords(), "SUCCESS", 0);
+                    int medals=Integer.parseInt(txtMedals.getText());
+                    double topSpeed=Double.parseDouble(txtSpeed.getText());
+                    int records=Integer.parseInt(txtRecords.getText());
+
+                    riderRecords=Controller.addRecords(rider, medals,topSpeed,records);
+                    recordList.add(riderRecords);
+                    JOptionPane.showMessageDialog(rootPane, "ADDED"+ riderRecords.displayRecords(), "SUCCESS", 0);
+
+                }
+                catch (InvalidBMIDetails ex){
+                    JOptionPane.showMessageDialog(backPane,ex.getMessage(), "Error",1);
+                }
+                catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(backPane,"Every field needs to be filled with values", "Error",1);
+
+                }
+
             }
         });
         btnCalBMI.addActionListener(new ActionListener() {

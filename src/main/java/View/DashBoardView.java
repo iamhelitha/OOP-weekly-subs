@@ -8,7 +8,7 @@ public class DashBoardView extends JFrame {
     private JButton bicycleManagerButton;
     private JButton viewBankAccountButton;
     private JButton riderManagerButton;
-    private JPanel DashBoardUI;
+    public JPanel DashBoardUI;
 
     public DashBoardView() {
         viewBankAccountButton.addActionListener(new ActionListener() {
