@@ -11,10 +11,10 @@ public class LoginController {
         CreatDB();
     }
     public void CreatDB(){
-        userDB.add("test1","123","admin");
-        userDB.add("test2","456","bike");
-        userDB.add("test3","789","rider");
-        userDB.add("test4","101","bank");
+        userDB.add(new User("test1","123","admin"));
+        userDB.add(new User("test2","456","bike"));
+        userDB.add(new User("test3","789","rider"));
+        userDB.add(new User("test4","101","bank"));
 
     }
     public User validateUser(User currentU){
